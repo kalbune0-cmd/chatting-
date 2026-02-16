@@ -1,1 +1,77 @@
-# chatting-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Chat App</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+.chat-container {
+    width: 350px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    padding: 10px;
+}
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.message {
+    margin: 5px 0;
+}
+.user {
+    color: blue;
+}
+.input-area {
+    display: flex;
+}
+input {
+    flex: 1;
+    padding: 8px;
+}
+button {
+    padding: 8px 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h3>Chat App</h3>
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="input-area">
+        <input type="text" id="messageInput" placeholder="Type message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    let input = document.getElementById("messageInput");
+    let message = input.value;
+
+    if(message.trim() === "") return;
+
+    let chatBox = document.getElementById("chatBox");
+
+    let msgDiv = document.createElement("div");
+    msgDiv.className = "message user";
+    msgDiv.textContent = "You: " + message;
+
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
